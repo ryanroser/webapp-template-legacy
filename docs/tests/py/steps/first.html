@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>first.py</title>
+  <link rel="stylesheet" href="../../../pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>first.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <p>This script contains some example steps that correspond to the
+features provided in first.feature</p>
+<ul>
+<li><em>Author</em> - Ryan Roser</li>
+<li><em>Date</em> - Blah</li>
+</ul>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="o">*</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="nd">@given</span><span class="p">(</span><span class="s">&#39;we have behave installed&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;we implement a test&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="bp">True</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">False</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;behave will test it for us!&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">failed</span> <span class="ow">is</span> <span class="bp">False</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

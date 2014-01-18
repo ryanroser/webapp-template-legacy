@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<title>Sample Page</title>
+		<script src="static/js/calculator.js"></script>
+	</head>
+<body>
+	<h1>Welcome!</h1>
+	<p><span id="a"></span> x <span id="b"></span> = <span id="result"></span></p>
+	<script type="text/javascript">
+		var a = 3;
+		var b = 5;
+		document.getElementById("a").innerHTML = a;
+		document.getElementById("b").innerHTML = b;
+		document.getElementById("result").innerHTML = calculator.multiply(a,b);
+	</script>
+</body>
+</html>
