@@ -1,7 +1,7 @@
-pick-a-plan
+webapp-template
 ===========
 
-A site that helps you pick the health plan that gives you the lowest total cost of care
+A template for Python + Javascript web apps, complete with testing.
 
 View the GitHub wiki for more information on the project.
 
