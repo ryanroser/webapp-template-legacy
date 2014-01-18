@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>build_docs.py</title>
+  <link rel="stylesheet" href="pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>build_docs.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <p>build_docs.py</p>
+<p>Build documentation for the project.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">call</span>
+<span class="kn">import</span> <span class="nn">re</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>Gets the document title from an HTML document.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">get_doc_title</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">title</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">r&#39;&lt;title&gt;(.*)&lt;/title&gt;&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">matches</span><span class="p">:</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">matches</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="k">break</span>
+    <span class="k">return</span> <span class="n">title</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>Makes a HTML tree of documents in the docs in doc_dir_path</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">make_index_page</span><span class="p">(</span><span class="n">doc_dir_path</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">outfn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">doc_dir_path</span><span class="p">,</span><span class="s">&quot;index.html&quot;</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      <p>Makes the html format for the output</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">format_output</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">fn</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-6'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-6'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
+        <span class="n">src_fn</span> <span class="o">=</span> <span class="n">get_doc_title</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&quot;root&quot;</span><span class="p">:</span> <span class="n">root</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">doc_dir_path</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+            <span class="s">&quot;path&quot;</span><span class="p">:</span> <span class="n">file_path</span><span class="p">,</span>
+            <span class="s">&quot;file&quot;</span><span class="p">:</span> <span class="n">src_fn</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%(root)s</span><span class="s">/&lt;a href=&quot;/</span><span class="si">%(path)s</span><span class="s">&quot;&gt;</span><span class="si">%(file)s</span><span class="s">&lt;/a&gt;&lt;br&gt;&#39;</span> <span class="o">%</span> <span class="n">args</span> 
+        <span class="k">return</span> <span class="n">html</span>
+
+    <span class="n">src_paths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">doc_dir_path</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">fn</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&quot;html&quot;</span><span class="p">):</span>
+                    <span class="n">out_html</span> <span class="o">=</span> <span class="n">format_output</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">fn</span><span class="p">)</span>
+                    <span class="n">src_paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_html</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">outfn</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outf</span><span class="p">:</span>
+        <span class="n">outf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;&#39;&#39;</span>
+<span class="s">        &lt;html&gt;</span>
+<span class="s">            &lt;head&gt;</span>
+<span class="s">                &lt;title&gt;Document Directory&lt;/title&gt;</span>
+<span class="s">                &lt;link rel=&quot;stylesheet&quot; href=&quot;pycco.css&quot;&gt;</span>
+<span class="s">            &lt;/head&gt;</span>
+<span class="s">            &lt;body&gt;</span>
+<span class="s">                &lt;div id=&quot;container&quot; class=&quot;docs&quot;&gt;</span>
+<span class="s">                    &lt;h1&gt;Directory of Documentation&lt;/h1&gt;</span>
+<span class="s">                    &lt;hr&gt;</span>
+<span class="s">                    &lt;pre&gt;</span>
+<span class="s">        &#39;&#39;&#39;</span><span class="p">)</span>
+
+        <span class="n">outf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">src_paths</span><span class="p">))</span>
+
+        <span class="n">outf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;&#39;&#39;</span>
+<span class="s">                &lt;/pre&gt;&lt;/div&gt;</span>
+<span class="s">            &lt;/body&gt;</span>
+<span class="s">        &lt;/html&gt;</span>
+<span class="s">        &#39;&#39;&#39;</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-7'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-7'>#</a>
+      </div>
+      <p>Uses Pycco to create documentation for the project.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">create_pycco_docs</span><span class="p">():</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-8'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-8'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">temp_dir</span> <span class="o">=</span> <span class="s">&quot;docs.tmp&quot;</span>
+    <span class="n">final_dir</span> <span class="o">=</span> <span class="s">&quot;docs&quot;</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-9'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-9'>#</a>
+      </div>
+      <p>Make a temporary docs director</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">out</span> <span class="o">=</span> <span class="n">call</span><span class="p">([</span><span class="s">&quot;mkdir&quot;</span><span class="p">,</span> <span class="n">temp_dir</span><span class="p">,])</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-10'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-10'>#</a>
+      </div>
+      <p>Create the new documentation</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">pycco_args</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;pycco&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;-p&quot;</span><span class="p">,</span> <span class="s">&quot;*.py&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;-p&quot;</span><span class="p">,</span> <span class="s">&quot;tests/js/*.js&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;-p&quot;</span><span class="p">,</span> <span class="s">&quot;tests/js/*/*.js&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;-p&quot;</span><span class="p">,</span> <span class="s">&quot;tests/py/*.py&quot;</span><span class="p">,</span><span class="c">#</span>
+                    <span class="s">&quot;-p&quot;</span><span class="p">,</span> <span class="s">&quot;tests/py/*/*.py&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;-p&quot;</span><span class="p">,</span> <span class="s">&quot;tests/py/*/*.feature&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;-p&quot;</span><span class="p">,</span> <span class="s">&quot;src/*.py&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;-d&quot;</span><span class="p">,</span> <span class="n">temp_dir</span><span class="p">,</span>
+                <span class="p">]</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="n">call</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pycco_args</span><span class="p">),</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">err</span><span class="p">:</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-11'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-11'>#</a>
+      </div>
+      <p>There is a problem creating the documentation stop here</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="k">print</span> <span class="s">&quot;Error!!&quot;</span>
+        <span class="k">print</span> <span class="n">err</span>
+    <span class="k">else</span><span class="p">:</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-12'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-12'>#</a>
+      </div>
+      <p>Remove the existing documentation</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="n">out</span> <span class="o">=</span> <span class="n">call</span><span class="p">([</span><span class="s">&quot;rm&quot;</span><span class="p">,</span> <span class="s">&quot;-r&quot;</span><span class="p">,</span> <span class="n">final_dir</span><span class="p">,])</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-13'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-13'>#</a>
+      </div>
+      <p>rename the temporary docs dir to the docs dir</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="n">out</span> <span class="o">=</span> <span class="n">call</span><span class="p">([</span><span class="s">&quot;mv&quot;</span><span class="p">,</span> <span class="n">temp_dir</span><span class="p">,</span> <span class="n">final_dir</span><span class="p">,])</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    
+    <span class="n">create_pycco_docs</span><span class="p">()</span>
+    <span class="n">make_index_page</span><span class="p">(</span><span class="s">&quot;docs&quot;</span><span class="p">)</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>
