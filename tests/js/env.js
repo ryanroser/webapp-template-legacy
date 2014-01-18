@@ -3,7 +3,9 @@ Contains environment settings for the Jasmine tests.
  */
 
 // The root directory for javascript files
-var srcRoot = "/Users/ryanroser/Documents/Code/pick-a-plan/src/static/js/";
+// Feel free to overwrite this if it isnt working!
+// process.cwd() should point to the root of the project
+var srcRoot =  process.cwd() + "/src/static/js/";
 
 
 var fs = require('fs');
